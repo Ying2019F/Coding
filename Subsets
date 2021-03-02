@@ -1,0 +1,6 @@
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        results = [[]]
+        for item in nums:
+            results.extend([sub_list + [item] for sub_list in results])
+        return results
