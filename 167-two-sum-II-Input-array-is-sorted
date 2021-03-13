@@ -1,0 +1,18 @@
+class Solution:
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        if not numbers:
+            return []
+        if target == 0 and 0 in numbers:
+            i = numbers.index(0)
+            if numbers[i+1] == 0:
+                return [i+1, i+2]
+        separator = 0
+        while separator < len(numbers)-1 and target/2 > numbers[separator]:
+            separator += 1
+        if target%2 == 0 and numbers[separator] == target/2 and numbers[separator+1] == target/2:
+            return [separator+1, separator+2]
+        else:
+            for i in range(0, separator):
+                if target - numbers[i] in numbers[separator:]:
+                    j = numbers.index(target-numbers[i])
+                    return [i+1, j+1]
